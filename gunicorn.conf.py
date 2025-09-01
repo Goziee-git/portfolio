@@ -1,4 +1,7 @@
 bind = "unix:/home/prospa/portfolio/portfolio.sock"
+user= "ubuntu"
+group = "ubuntu"
+umask = 0o007
 workers = 2
 worker_class = "sync"
 worker_connections = 1000

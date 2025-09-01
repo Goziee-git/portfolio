@@ -3,11 +3,16 @@ Description=Portfolio Django App
 After=network.target
 
 [Service]
-User=prospa
-Group=prospa
-WorkingDirectory=/home/prospa/portfolio
-Environment="PATH=/home/prospa/portfolio/venv/bin"
-ExecStart=/home/prospa/portfolio/venv/bin/gunicorn --config gunicorn.conf.py portfolio_site.wsgi:application
+# IMPORTANT: User and Group must match the actual system user who owns the portfolio directory
+# If your EC2 user is 'ubuntu', change these to 'ubuntu'. If 'ec2-user', change to 'ec2-user'
+User=ubuntu  
+Group=ubuntu
+# IMPORTANT: WorkingDirectory and Environment PATH must match your actual portfolio location
+# Update these paths to match where your portfolio is located on EC2
+WorkingDirectory=/home/ubuntu/portfolio
+Environment="PATH=/home/ubuntu/portfolio/venv/bin"
+# IMPORTANT: ExecStart path must match your actual venv location
+ExecStart=/home/ubuntu/portfolio/venv/bin/gunicorn --config gunicorn.conf.py portfolio_site.wsgi:application
 Restart=always
 
 [Install]
