@@ -1,0 +1,33 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Contact - Portfolio{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <h2>Get In Touch</h2>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+    </div>
+    <div class="col-lg-4">
+        <h3>Contact Information</h3>
+        <p><strong>Email:</strong> developer@example.com</p>
+        <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+        <p><strong>LinkedIn:</strong> linkedin.com/in/developer</p>
+        <p><strong>GitHub:</strong> github.com/developer</p>
+    </div>
+</div>
+{% endblock %}

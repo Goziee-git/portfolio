@@ -1,0 +1,26 @@
+{% extends 'portfolio/base.html' %}
+
+{% block title %}Home - Portfolio{% endblock %}
+
+{% block content %}
+<div class="hero-section text-center py-5">
+    <h1 class="display-4">Welcome to My Portfolio</h1>
+    <p class="lead">Full Stack Developer & Software Engineer</p>
+    <a href="{% url 'projects' %}" class="btn btn-primary btn-lg">View My Work</a>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4 text-center">
+        <h3>Web Development</h3>
+        <p>Building modern web applications with Django, React, and more.</p>
+    </div>
+    <div class="col-md-4 text-center">
+        <h3>Backend Systems</h3>
+        <p>Designing scalable APIs and database architectures.</p>
+    </div>
+    <div class="col-md-4 text-center">
+        <h3>DevOps</h3>
+        <p>Deploying applications with Docker, AWS, and CI/CD pipelines.</p>
+    </div>
+</div>
+{% endblock %}

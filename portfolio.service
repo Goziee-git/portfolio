@@ -1,0 +1,14 @@
+[Unit]
+Description=Portfolio Django App
+After=network.target
+
+[Service]
+User=prospa
+Group=prospa
+WorkingDirectory=/home/prospa/portfolio
+Environment="PATH=/home/prospa/portfolio/venv/bin"
+ExecStart=/home/prospa/portfolio/venv/bin/gunicorn --config gunicorn.conf.py portfolio_site.wsgi:application
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
