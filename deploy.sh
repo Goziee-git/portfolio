@@ -12,12 +12,18 @@ python manage.py migrate
 # Collect static files
 python manage.py collectstatic --noinput
 
-# Create superuser (optional)
-echo "To create a superuser, run: python manage.py createsuperuser"
+# Setup systemd service for auto-start
+sudo cp portfolio.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable portfolio
+
+# Setup Nginx configuration
+sudo cp nginx.conf /etc/nginx/sites-available/portfolio
+sudo ln -sf /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+
+# Start the service
+sudo systemctl start portfolio
 
 echo "Deployment complete!"
-echo ""
-echo "To start the application:"
-echo "1. Start Gunicorn: gunicorn --config gunicorn.conf.py portfolio_site.wsgi:application"
-echo "2. Configure Nginx with the provided nginx.conf"
-echo "3. Or use systemd service: sudo cp portfolio.service /etc/systemd/system/ && sudo systemctl enable portfolio && sudo systemctl start portfolio"
+echo "Portfolio service is now running and will auto-start on boot."

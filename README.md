@@ -23,7 +23,7 @@ A production-ready Django portfolio website with Gunicorn and Nginx.
    ./deploy.sh
    ```
 
-3. **Start with Gunicorn:**
+3. **Manual Gunicorn start (development only):**
    ```bash
    source venv/bin/activate
    gunicorn --config gunicorn.conf.py portfolio_site.wsgi:application
@@ -31,20 +31,35 @@ A production-ready Django portfolio website with Gunicorn and Nginx.
 
 ## Production Setup
 
-1. **Copy Nginx configuration:**
-   ```bash
-   sudo cp nginx.conf /etc/nginx/sites-available/portfolio
-   sudo ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/
-   sudo nginx -t && sudo systemctl reload nginx
-   ```
+The deployment script automatically configures the service to start on boot:
 
-2. **Setup systemd service:**
+```bash
+./deploy.sh
+```
+
+**Manual setup steps:**
+
+1. **Setup systemd service (auto-start on boot):**
    ```bash
    sudo cp portfolio.service /etc/systemd/system/
    sudo systemctl daemon-reload
    sudo systemctl enable portfolio
    sudo systemctl start portfolio
    ```
+
+2. **Setup Nginx configuration:**
+   ```bash
+   sudo cp nginx.conf /etc/nginx/sites-available/portfolio
+   sudo ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/
+   sudo nginx -t && sudo systemctl reload nginx
+   ```
+
+**Service management:**
+```bash
+sudo systemctl status portfolio    # Check status
+sudo systemctl restart portfolio   # Restart service
+sudo systemctl stop portfolio      # Stop service
+```
 
 ## Environment Variables
 

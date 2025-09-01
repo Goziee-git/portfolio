@@ -1,4 +1,4 @@
-bind = "127.0.0.1:8000"
+bind = "unix:/home/prospa/portfolio/portfolio.sock"
 workers = 2
 worker_class = "sync"
 worker_connections = 1000
