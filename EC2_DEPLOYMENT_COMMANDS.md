@@ -106,7 +106,7 @@ Your gunicorn.conf.py should include:
 
 python
 ```bash
-bind = "unix:/home/ubuntu/Python_Static_website/gunicorn.sock"
+bind = "unix:/home/ubuntu/gunicorn.sock"
 user = "ubuntu"
 group = "ubuntu"
 umask = 0o007  # This allows group access to the socket
